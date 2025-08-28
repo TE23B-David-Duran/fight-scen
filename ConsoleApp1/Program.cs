@@ -1,21 +1,39 @@
-﻿Fight();
+﻿bool spelaIgen = true;
 
+while (spelaIgen)
+{
+    Fight();
+
+    Console.WriteLine("Vill du spela igen? ja eller nej?");
+    string svar = Console.ReadLine();
+
+    if (svar == "ja")
+    {
+        Console.Clear();
+    }
+    else
+    {
+        spelaIgen = false;
+        Console.WriteLine("Bra kört!");
+    }
+}
 static void Fight()
 {
+
     int p1Hp = 100;
     int p2Hp = 100;
-
-    string p1Name = "Alex";
-    string p2Name = "Calin";
+    Console.WriteLine("Vad heter du?");
+    string p1Name = Console.ReadLine();
+    Console.WriteLine("Vem ska du fighta?");
+    string p2Name = Console.ReadLine();
 
     while (p1Hp > 0 && p2Hp > 0)
     {
         Console.WriteLine($"{p1Name}: {p1Hp}");
         Console.WriteLine($"{p2Name}: {p2Hp}");
-        p2Hp -= Random.Shared.Next(10, 25); // Alex slår Calin
-        p1Hp -= Random.Shared.Next(10, 25); // Calin slår Alex
-        Thread.Sleep(1000);
-
+        p2Hp -= Random.Shared.Next(10, 25);
+        p1Hp -= Random.Shared.Next(10, 25); 
+        Console.ReadLine();
     }
     if (p1Hp > 0)
     {
@@ -29,7 +47,5 @@ static void Fight()
     {
         Console.WriteLine($"{p2Name} vann!");
     }
-
-
     Console.ReadLine();
 }
